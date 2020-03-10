@@ -1,16 +1,21 @@
 {
-  "database": {
-    "rules": "database.rules.json"
-  },
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
-  "storage": {
-    "rules": "storage.rules"
-  }
+	"database": {
+		"rules": "database.rules.json"
+	},
+	"hosting": {
+		"public": "public",
+		"ignore": [
+			"firebase.json",
+			"**/.*",
+			"**/node_modules/**"
+		],
+		"redirects": [{
+			"source": "/",
+			"destination": "/home.html",
+			"type": 301
+		}]
+	},
+	"storage": {
+		"rules": "storage.rules"
+	}
 }
