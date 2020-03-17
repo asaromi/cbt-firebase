@@ -5,6 +5,7 @@
 		<!-- Basic -->
 		<meta charset="UTF-8">
 
+		<title>Login Page</title>
 		<meta name="keywords" content="HTML5 Admin Template" />
 		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -12,11 +13,22 @@
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+		<!-- Using Firebase JS -->
+		<!-- update the version number as needed -->
+		<script defer src="/__/firebase/7.9.3/firebase-app.js"></script>
+		<!-- include only the Firebase features as you need -->
+		<script defer src="/__/firebase/7.9.3/firebase-auth.js"></script>
+		<script defer src="/__/firebase/7.9.3/firebase-database.js"></script>
+		<script defer src="/__/firebase/7.9.3/firebase-messaging.js"></script>
+		<script defer src="/__/firebase/7.9.3/firebase-storage.js"></script>
+		<!-- initialize the SDK after all desired features are loaded -->
+		<script defer src="/__/firebase/init.js"></script>
 		<!-- Web Fonts  -->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="assets/vendor/bootstrap/loader.css">
 		<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
 		<link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css" />
 		<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
@@ -33,8 +45,35 @@
 		<!-- Head Libs -->
 		<script src="assets/vendor/modernizr/modernizr.js"></script>
 
+		<style>
+			#preloader {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background-color: #fff;
+			}
+
+			.loading {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				font: 14px arial;
+			}
+		</style>
+
 	</head>
 	<body>
+		<div id="preloader">
+			<div class="loader loading" id="loader-4">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </div>
+		</div>
 		<!-- start: page -->
 		<section class="body-sign">
 			<div class="center-sign">
@@ -47,11 +86,11 @@
 						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
 					</div>
 					<div class="panel-body">
-						<form method="post">
+						<form method="post" onsubmit="setSession()">
 							<div class="form-group mb-lg">
 								<label>Username</label>
 								<div class="input-group input-group-icon">
-									<input name="username" type="text" class="form-control input-lg" />
+									<input name="email" type="text" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -66,7 +105,7 @@
 									<a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
 								</div>
 								<div class="input-group input-group-icon">
-									<input name="pwd" type="password" class="form-control input-lg" />
+									<input name="password" type="password" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -84,7 +123,7 @@
 								</div>
 								<div class="col-sm-4 text-right">
 									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
-									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+									<!-- <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button> -->
 								</div>
 							</div>
 
@@ -108,6 +147,24 @@
 		</section>
 		<!-- end: page -->
 
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				try {
+					document.getElementById("preloader").style.visibility = 'hidden';
+					var db = firebase.database();
+					let app = firebase.app();
+					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+					console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+				} catch (e) {
+					console.error(e);
+					console.log('Error loading the Firebase SDK, check the console.');
+				}
+			});
+			if(sessionStorage.status){
+				window.location.href = "home.html";
+			}
+		</script>
+
 		<!-- Vendor -->
 		<script src="assets/vendor/jquery/jquery.js"></script>
 		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -125,7 +182,7 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="assets/javascripts/theme.init.js"></script>
-		<script src="assets/javascripts/login.js"></script>
+		<script defer src="assets/javascripts/login.js"></script>
 
 	</body><img src="http://www.ten28.com/fref.jpg">
 </html>

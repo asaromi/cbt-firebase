@@ -311,8 +311,12 @@
 		onTabShow: function( tab, navigation, index ) {
 			var $total = navigation.find('li').length;
 			var $current = index + 1;
+			var proses = $current+"/"+$total;
+			console.log(proses);
 			var $percent = ( $current / $total ) * 100;
 			$('#w5').find('.progress-bar').css({ 'width': $percent + '%' });
+			$('#w5').find('.progress-bar').html($current);
+			$('#w5').find('h4#total').html(proses);
 		}
 	});
 

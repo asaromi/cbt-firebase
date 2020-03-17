@@ -1,4 +1,4 @@
-var db = firebase.database();
+const db = firebase.app();
 var login = false;
 
 function thisDate() {
