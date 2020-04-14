@@ -1,4 +1,4 @@
-const db = firebase.app();
+const db = firebase.database();
 var login = false;
 
 function thisDate() {
@@ -50,19 +50,26 @@ function setSession() {
     var password = getPassword();
     var db_user = db.ref("SBMPN/users");
     db_user.orderByChild("email").equalTo(email).once("child_added", function (snapshot) {
-        var value = snapshot.val();
-        console.log(value);
-        if(value.password == window.btoa(password)){
-            sessionStorage.id = value.id;
-            sessionStorage.email = value.email;
-            sessionStorage.nama = value.nama;
-            if(value.status) {
-                sessionStorage.status = value.status;
-                alert("Anda berhasil Login \nEmail : "+ sessionStorage.email + "\nID : " + sessionStorage.id);
-                location.href = "index.html";
+        if(snapshot.exists()){
+            var value = snapshot.val();
+            console.log(value);
+            if(value.password == window.btoa(password)){
+                sessionStorage.id = value.id;
+                sessionStorage.email = value.email;
+                sessionStorage.nama = value.nama;
+                if(value.status) {
+                    sessionStorage.status = value.status;
+                    alert("Anda berhasil Login \nEmail : "+ sessionStorage.email + "\nID : " + sessionStorage.id);
+                    location.href = "index.html";
+                } else {
+                    alert("Email yang Anda masukkan belum terverifikasi. Silahkan hubungi Admin")
+                }
+            } else {
+                alert("Password yang anda masukkan salah");
             }
         } else {
-            alert("Password yang anda masukkan salah");
+            console.log("anjer");
+            alert("Email yang Anda masukkan belum terdaftar");
         }
     });
 }
