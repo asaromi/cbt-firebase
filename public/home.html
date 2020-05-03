@@ -1021,6 +1021,9 @@
 		</section>
 
 		<script>
+			if(!sessionStorage.status){
+				location.href = "login.html";
+			}
 			document.addEventListener('DOMContentLoaded', function () {
 				try {
 					document.getElementById("preloader").style.visibility = 'hidden';
