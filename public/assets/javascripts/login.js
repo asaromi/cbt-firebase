@@ -1,5 +1,6 @@
 const db = firebase.database();
 var login = false;
+const stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
 
 function thisDate() {
     var today = new Date();
@@ -46,6 +47,7 @@ function register() {
 }
 
 function setSession() {
+    $('')
     var email = getEmail();
     var password = getPassword();
     var db_user = db.ref("SBMPN/users");
@@ -59,28 +61,27 @@ function setSession() {
                 sessionStorage.nama = value.nama;
                 if(value.status) {
                     sessionStorage.status = value.status;
-                    alert("Anda berhasil Login \nEmail : "+ sessionStorage.email + "\nID : " + sessionStorage.id);
                     location.href = "index.html";
                 } else {
-                    alert("Email yang Anda masukkan belum terverifikasi. Silahkan hubungi Admin")
+                    alert("Email yang Anda masukkan belum terverifikasi. Silahkan hubungi Admin");
                 }
             } else {
-                alert("Password yang anda masukkan salah");
+                var notice = new PNotify({
+                    title: 'ERROR',
+                    text: 'Password yang anda masukkan salah.',
+                    type: 'error',
+                    addclass: 'stack-bar-top',
+                    stack: stack_bar_top,
+                    width: "100%",
+                    nonblock: {
+                        nonblock: true,
+                        nonblock_opacity: .2
+                    }
+                });
             }
         } else {
             console.log("anjer");
             alert("Email yang Anda masukkan belum terdaftar");
         }
     });
-}
-
-function setLogin(){
-    var a = setSession();
-
-    if(a) {
-        alert("Anda berhasil Login \nEmail : "+ sessionStorage.email + "\nID : " + sessionStorage.id);
-        location.href = "index.html";
-    } else {
-        alert("Anda belum terdaftar sebagai user aktif.\n Jika sudah daftar dan masih tidak bisa login, silahkan hubungi admin.");
-    }
 }
