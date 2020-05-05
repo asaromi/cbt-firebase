@@ -1,1 +1,13 @@
 /* Add here all your CSS customizations */
+.pager li > button:hover, .pager li > button:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
+.pager li > button {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+}

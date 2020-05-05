@@ -271,20 +271,20 @@
 						
 										<h2 class="panel-title">Form Wizard</h2>
 									</header>
-									<div class="panel-body">
+									<div class="panel-body">										
 										<div class="wizard-tabs hidden">
 											<ul class="wizard-steps">
 												<li class="active">
-													<a href="#w5-account" data-toggle="tab"><span class="badge">1</span>Account Info</a>
+													<a href="#soal-1" data-toggle="tab"><span class="badge">1</span>Account Info</a>
 												</li>
 												<li>
-													<a href="#w5-profile" data-toggle="tab"><span class="badge">2</span>Profile Info</a>
+													<a href="#soal-2" data-toggle="tab"><span class="badge">2</span>Profile Info</a>
 												</li>
 												<li>
-													<a href="#w5-billing" data-toggle="tab"><span class="badge">3</span>Billing Info</a>
+													<a href="#soal-3" data-toggle="tab"><span class="badge">3</span>Billing Info</a>
 												</li>
 												<li>
-													<a href="#w5-confirm" data-toggle="tab"><span class="badge">4</span>Confirmation</a>
+													<a href="#soal-4" data-toggle="tab"><span class="badge">4</span>Confirmation</a>
 												</li>
 											</ul>
 										</div>
@@ -294,11 +294,11 @@
 											</div>
 										</div>
 										<div class="col-md-12 text-center">
-											<h4 id="total">any</h4>
+											<h4 id="total"></h4>
 										</div>
 										<form class="form-horizontal" novalidate="novalidate">
 											<div class="tab-content">
-												<div id="w5-account" class="tab-pane active">
+												<div id="soal-1" class="tab-pane active">
 													<div class="form-group">
 														<label class="col-sm-3 control-label" for="w5-username">Username</label>
 														<div class="col-sm-7">
@@ -308,11 +308,11 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label" for="w5-password">Password</label>
 														<div class="col-sm-7">
-															<input type="password" class="form-control" name="password" id="w5-password" minlength="2" required>
+															<input type="password" class="form-control" name="password" id="w5-password" minlength="6" required>
 														</div>
 													</div>
 												</div>
-												<div id="w5-profile" class="tab-pane">
+												<div id="soal-2" class="tab-pane">
 													<div class="form-group">
 														<label class="col-sm-3 control-label" for="w5-first-name">First Name</label>
 														<div class="col-sm-7">
@@ -326,7 +326,7 @@
 														</div>
 													</div>
 												</div>
-												<div id="w5-billing" class="tab-pane">
+												<div id="soal-3" class="tab-pane">
 													<div class="form-group">
 														<label class="col-sm-3 control-label" for="w5-cc">Card Number</label>
 														<div class="col-sm-7">
@@ -334,7 +334,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-4 control-label" for="inputSuccess">Expiration</label>
+														<label class="col-sm-3 control-label" for="inputSuccess">Expiration</label>
 														<div class="col-sm-4">
 															<select class="form-control" name="exp-month" required>
 																<option>January</option>
@@ -351,7 +351,7 @@
 																<option>December</option>
 															</select>
 														</div>
-														<div class="col-sm-4">
+														<div class="col-sm-3">
 															<select class="form-control" name="exp-year" required>
 																<option>2014</option>
 																<option>2015</option>
@@ -366,7 +366,7 @@
 														</div>
 													</div>
 												</div>
-												<div id="w5-confirm" class="tab-pane">
+												<div id="soal-4" class="tab-pane">
 													<div class="form-group">
 														<label class="col-sm-3 control-label" for="w5-email">Email</label>
 														<div class="col-sm-7">
@@ -385,19 +385,23 @@
 												</div>
 											</div>
 										</form>
-									</div>
-									<div class="panel-footer">
 										<ul class="pager">
 											<li class="previous disabled">
 												<a><i class="fa fa-angle-left"></i> Previous</a>
 											</li>
-											<li class="finish hidden pull-right">
-												<a>Finish</a>
+											<li class="finish btn-link hidden pull-right">
+												<button>Finish</button>
 											</li>
 											<li class="next">
 												<a>Next <i class="fa fa-angle-right"></i></a>
 											</li>
 										</ul>
+									</div>
+									<div class="panel-footer text-center">
+										<button id="page-1" type="button" class="btn btn-secondary page-soal active">1</button>
+										<button id="page-2" type="button" class="btn btn-secondary page-soal">2</button>
+										<button id="page-3" type="button" class="btn btn-secondary page-soal">3</button>
+										<button id="page-4" type="button" class="btn btn-secondary page-soal">4</button>
 									</div>
 								</section>
 							</div>
@@ -405,77 +409,10 @@
 					<!-- end: page -->
 				</section>
 			</div>
-
-			<aside id="sidebar-right" class="sidebar-right">
-				<div class="nano">
-					<div class="nano-content">
-						<a href="#" class="mobile-close visible-xs">
-							Collapse <i class="fa fa-chevron-right"></i>
-						</a>
-			
-						<div class="sidebar-right-wrapper">
-			
-							<div class="sidebar-widget widget-calendar">
-								<h6>Upcoming Tasks</h6>
-								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
-			
-								<ul>
-									<li>
-										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-										<span>Company Meeting</span>
-									</li>
-								</ul>
-							</div>
-			
-							<div class="sidebar-widget widget-friends">
-								<h6>Friends</h6>
-								<ul>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-			
-						</div>
-					</div>
-				</div>
-			</aside>
 		</section>
 
 		<script>
+			
 			document.addEventListener('DOMContentLoaded', function () {
 				try {
 					document.getElementById("preloader").style.visibility = 'hidden';
@@ -516,6 +453,14 @@
 		<script src="assets/javascripts/theme.init.js"></script>
 
 		<!-- Examples -->
-		<script src="assets/javascripts/forms/examples.wizard.js"></script>
+		<!-- <script src="assets/javascripts/forms/examples.wizard.js"></script> -->
+		<script src="assets/javascripts/soal.js"></script>
+		<script>
+			$(document).ready(function(){
+				var current = $('.page-soal.active').html();
+				var length = $('.page-soal').length;
+				$('.progress-striped .progress-bar').css('width',(current/length*100)+'%');
+			});
+		</script>
 	</body>
 </html>
