@@ -315,8 +315,6 @@
 			console.log(proses);
 			var $percent = ( $current / $total ) * 100;
 			$('#w5').find('.progress-bar').css({ 'width': $percent + '%' });
-			$('#w5').find('.progress-bar').html($current);
-			$('#w5').find('h4#total').html(proses);
 		}
 	});
 
