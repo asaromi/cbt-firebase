@@ -19,8 +19,32 @@ $('.previous').on('click', function(){
     changeSoal(id, total);
 });
 
+function checkRagu() {
+    var current = $('.page-soal').parent().find('.active');
+    if ($("input[name='ragu#1']").is(":checked")) {
+        current.removeClass('btn-secondary');
+        current.addClass('btn-warning');
+    } else {
+        current.removeClass('btn-warning');
+        current.addClass('btn-secondary');
+    }
+}
+
 function changeSoal(id, total) {
-    $('.page-soal').parent().find('.active').removeClass('active');
+    var before = $('.page-soal').parent().find('.active');
+    before.removeClass('active');
+
+    if (!$("input[name='jawaban#"+before.html()+"']:checked").val()) {
+        before.removeClass('btn-secondary');
+        before.addClass('btn-warning');
+    } else {
+        before.removeClass('btn-warning');
+        before.addClass('btn-secondary');
+    }
+
+    var progress = $('.page-soal.btn-secondary').length/total*100;
+    console.log(progress);
+
     $('.page-soal').eq(id).addClass('active');
     $('.tab-content').find('.active').removeClass('active');
     $('.tab-pane').eq(id).addClass('active');
@@ -28,6 +52,9 @@ function changeSoal(id, total) {
     $('.wizard-steps li').eq(id).addClass('active');
     console.log(id+" "+total);
     $('.progress-striped .progress-bar').css('width',((Number(id)+1)/total*100)+'%');
+    $('.progress-striped .progress-bar').html(((Number(id)+1)/total*100)+'%');
+    $('#judul-soal').html("#"+(Number(id)+1));
+    $('#isi-soal').html("Soal #"+(Number(id)+1)+" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a adipiscing lectus. Aenean fermentum mauris erat, quis accumsan eros facilisis sed. Nullam convallis arcu nec imperdiet pharetra. Suspendisse sed pharetra orci. Integer elementum augue sed dui sollicitudin, eu molestie leo rutrum. Vestibulum sit amet ullamcorper nunc.");
     checkId(id);
 }
 

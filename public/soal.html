@@ -261,15 +261,20 @@
 
 					<!-- start: page -->
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-2"> </div>
+							<div class="col-md-8">
 								<section class="panel form-wizard" id="w5">
 									<header class="panel-heading">
 										<div class="panel-actions">
 											<a href="#" class="fa fa-caret-down"></a>
 											<a href="#" class="fa fa-times"></a>
 										</div>
-						
-										<h2 class="panel-title">Form Wizard</h2>
+										<span id="judul-soal" class="h2">#1</span>
+										<div class="progress progress-striped progress-lg m-md light">
+											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width: 0%;">
+												<span class="sr-only">0%</span>25%
+											</div>
+										</div>
 									</header>
 									<div class="panel-body">										
 										<div class="wizard-tabs hidden">
@@ -288,41 +293,89 @@
 												</li>
 											</ul>
 										</div>
-										<div class="progress progress-striped progress-xl m-md light">
-											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-												<span class="sr-only">0%</span>
-											</div>
-										</div>
-										<div class="col-md-12 text-center">
-											<h4 id="total"></h4>
+										<div class="col-md-12 text-left">
+											<p class="lead" style="font-size: 19px;" id="isi-soal" style="max-width: 100%;">Soal #1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a adipiscing lectus. Aenean fermentum mauris erat, quis accumsan eros facilisis sed. Nullam convallis arcu nec imperdiet pharetra. Suspendisse sed pharetra orci. Integer elementum augue sed dui sollicitudin, eu molestie leo rutrum. Vestibulum sit amet ullamcorper nunc.</p>
 										</div>
 										<form class="form-horizontal" novalidate="novalidate">
 											<div class="tab-content">
 												<div id="soal-1" class="tab-pane active">
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-username">Username</label>
-														<div class="col-sm-7">
-															<input type="text" class="form-control" name="username" id="w5-username" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#1A" name="jawaban#1" value="1">
+															<label for="pilgan#1A">1 - Pilihan A</label>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-password">Password</label>
-														<div class="col-sm-7">
-															<input type="password" class="form-control" name="password" id="w5-password" minlength="6" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#1B" name="jawaban#1" value="2">
+															<label for="pilgan#1B">1 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#1C" name="jawaban#1" value="3">
+															<label for="pilgan#1C">1 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#1D" name="jawaban#1" value="4">
+															<label for="pilgan#1D">1 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#1E" name="jawaban#1" value="5">
+															<label for="pilgan#1E">1 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#1" name="ragu#1">
+															<label for="ragu#1">Klik jika masih ragu dengan jawaban kamu</label>
 														</div>
 													</div>
 												</div>
 												<div id="soal-2" class="tab-pane">
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-first-name">First Name</label>
-														<div class="col-sm-7">
-															<input type="text" class="form-control" name="first-name" id="w5-first-name" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#2A" name="jawaban#2" value="1">
+															<label for="pilgan#2A">2 - Pilihan A</label>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-last-name">Last Name</label>
-														<div class="col-sm-7">
-															<input type="text" class="form-control" name="last-name" id="w5-last-name" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#2B" name="jawaban#2" value="2">
+															<label for="pilgan#2B">2 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#2C" name="jawaban#2" value="3">
+															<label for="pilgan#2C">2 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#2D" name="jawaban#2" value="4">
+															<label for="pilgan#2D">2 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#2E" name="jawaban#2" value="5">
+															<label for="pilgan#2E">2 - Pilihan E</label>
 														</div>
 													</div>
 												</div>
@@ -405,6 +458,7 @@
 									</div>
 								</section>
 							</div>
+							<div class="col-md-2"></div>
 						</div>
 					<!-- end: page -->
 				</section>
