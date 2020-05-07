@@ -1,6 +1,15 @@
 const db = firebase.database();
+const auth = firebase.auth();
 var login = false;
 const stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
+
+$('a.btn-danger').on('click', function () {
+    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+});
+
+if($("input[name='rememberme']").is(':checked')){
+    auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
+}
 
 function thisDate() {
     var today = new Date();
@@ -20,6 +29,12 @@ function getEmail() {
 function getPassword() {
     var password = $("input[name='password']").val();
     return password;
+}
+
+function signIn(){
+    auth.signInWithEmailAndPassword(getEmail(), getPassword()).catch(function(error) {
+        console.log('user not found');
+    });
 }
 
 function register() {
@@ -47,7 +62,6 @@ function register() {
 }
 
 function setSession() {
-    $('')
     var email = getEmail();
     var password = getPassword();
     var db_user = db.ref("SBMPN/users");

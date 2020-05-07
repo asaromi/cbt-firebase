@@ -40,9 +40,6 @@
 		<!-- Skin CSS -->
 		<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
 
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="assets/stylesheets/theme-custom.css">
-
 		<style>
 			#preloader {
 				position: fixed;
@@ -81,10 +78,10 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Login</h2>
 					</div>
 					<div class="panel-body">
-						<form id="myForm" method="post" onsubmit="setSession()">
+						<form id="myForm" method="post" onsubmit="signIn()">
 							<div class="form-group mb-lg">
 								<label>Username</label>
 								<div class="input-group input-group-icon">
@@ -100,7 +97,7 @@
 							<div class="form-group mb-lg">
 								<div class="clearfix">
 									<label class="pull-left">Password</label>
-									<a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
+									<a href="reset-password.html" class="pull-right">Lost Password?</a>
 								</div>
 								<div class="input-group input-group-icon">
 									<input name="password" type="password" required class="form-control input-lg" />
@@ -120,7 +117,7 @@
 									</div>
 								</div>
 								<div class="col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary">Sign In</button>
+									<button type="submit" class="btn btn-primary">Login</button>
 								</div>
 							</div>
 
@@ -129,7 +126,7 @@
 							</span>
 
 							<div class="mb-xs text-center">
-								<a class="btn btn-danger mb-md ml-xs mr-xs"><i class="fa fa-google-plus-square"></i> Connect with Google</i></a>
+								<a class="btn btn-danger mb-md ml-xs mr-xs"><i class="fa fa-google-plus-square"></i> Connect with Google</a>
 							</div>
 
 							<p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a>
@@ -151,6 +148,13 @@
 					let app = firebase.app();
 					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
 					console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+					firebase.auth().onAuthStateChanged(function (user) {
+						if(user){
+							console.log(user);
+							window.location.href = "/";
+						} else
+							console.log('no user');
+					});
 				} catch (e) {
 					console.error(e);
 					console.log('Error loading the Firebase SDK, check the console.');
@@ -160,10 +164,6 @@
 			var form = document.getElementById("myForm");
 			function handleForm(event) { event.preventDefault(); } 
 			form.addEventListener('submit', handleForm);
-
-			if(sessionStorage.status){
-				window.location.href = "home.html";
-			}
 		</script>
 		
 		<!-- Theme Initialization Files -->
