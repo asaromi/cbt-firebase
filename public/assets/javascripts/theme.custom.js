@@ -11,7 +11,8 @@ if (pwd == "/home.html" || pwd == "/soal.html") {
             $('.profile-info').find('.name').html(user.displayName);
             $('.profile-info').attr('data-lock-name',user.displayName);
             $('.profile-info').attr('data-lock-email',user.email);
-            document.getElementById("preloader").style.visibility = 'hidden';
+            $('figure.profile-picture img').attr('alt', user.displayName);
+            $('.preloader').attr('hidden',true);
             console.log(user.photoURL);
             if (user.photoURL) {
                 $('figure.profile-picture img').attr('src', user.photoURL);
