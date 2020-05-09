@@ -49,29 +49,9 @@
 		<!-- initialize the SDK after all desired features are loaded -->
 		<script defer src="/__/firebase/init.js"></script>
 
-		<style>
-			#preloader {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 9999;
-				background-color: #fff;
-			}
-
-			.loading {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				font: 14px arial;
-			}
-		</style>
-
 	</head>
 	<body>
-		<div id="preloader">
+		<div class="preloader">
 			<div class="loader loading" id="loader-4">
 				<span></span>
 				<span></span>
@@ -94,7 +74,7 @@
 				<!-- start: search & user box -->
 				<div class="header-right">
 					<span class="separator"></span>
-					<div id="userbox" class="userbox">
+					<div id="userbox" class="userbox pull-right" style="margin-top: 12px;">
 						<a href="#" data-toggle="dropdown">
 							<figure class="profile-picture">
 								<img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
@@ -280,16 +260,16 @@
 										<div class="wizard-tabs hidden">
 											<ul class="wizard-steps">
 												<li class="active">
-													<a href="#soal-1" data-toggle="tab"><span class="badge">1</span>Account Info</a>
+													<a href="#soal-1" data-toggle="tab"><span class="badge">1</span></a>
 												</li>
 												<li>
-													<a href="#soal-2" data-toggle="tab"><span class="badge">2</span>Profile Info</a>
+													<a href="#soal-2" data-toggle="tab"><span class="badge">2</span></a>
 												</li>
 												<li>
-													<a href="#soal-3" data-toggle="tab"><span class="badge">3</span>Billing Info</a>
+													<a href="#soal-3" data-toggle="tab"><span class="badge">3</span></a>
 												</li>
 												<li>
-													<a href="#soal-4" data-toggle="tab"><span class="badge">4</span>Confirmation</a>
+													<a href="#soal-4" data-toggle="tab"><span class="badge">4</span></a>
 												</li>
 											</ul>
 										</div>
@@ -338,7 +318,7 @@
 													<div class="form-group m-sm">
 														<div class="col-md-9 checkbox-custom checkbox-default">
 															<input type="checkbox" onclick="checkRagu()" id="ragu#1" name="ragu#1">
-															<label for="ragu#1">Klik jika masih ragu dengan jawaban kamu</label>
+															<label for="ragu#1"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
 														</div>
 													</div>
 												</div>
@@ -378,61 +358,231 @@
 															<label for="pilgan#2E">2 - Pilihan E</label>
 														</div>
 													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#2" name="ragu#2">
+															<label for="ragu#2"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
 												</div>
 												<div id="soal-3" class="tab-pane">
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-cc">Card Number</label>
-														<div class="col-sm-7">
-															<input type="text" class="form-control" name="cc-number" id="w5-cc" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#3A" name="jawaban#3" value="1">
+															<label for="pilgan#3A">3 - Pilihan A</label>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="inputSuccess">Expiration</label>
-														<div class="col-sm-4">
-															<select class="form-control" name="exp-month" required>
-																<option>January</option>
-																<option>February</option>
-																<option>March</option>
-																<option>April</option>
-																<option>May</option>
-																<option>June</option>
-																<option>July</option>
-																<option>August</option>
-																<option>September</option>
-																<option>October</option>
-																<option>November</option>
-																<option>December</option>
-															</select>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#3B" name="jawaban#3" value="2">
+															<label for="pilgan#3B">3 - Pilihan B</label>
 														</div>
-														<div class="col-sm-3">
-															<select class="form-control" name="exp-year" required>
-																<option>2014</option>
-																<option>2015</option>
-																<option>2016</option>
-																<option>2017</option>
-																<option>2018</option>
-																<option>2019</option>
-																<option>2020</option>
-																<option>2021</option>
-																<option>2022</option>
-															</select>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#3C" name="jawaban#3" value="3">
+															<label for="pilgan#3C">3 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#3D" name="jawaban#3" value="4">
+															<label for="pilgan#3D">3 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#3E" name="jawaban#3" value="5">
+															<label for="pilgan#3E">3 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#3" name="ragu#3">
+															<label for="ragu#3"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
 														</div>
 													</div>
 												</div>
 												<div id="soal-4" class="tab-pane">
 													<div class="form-group">
-														<label class="col-sm-3 control-label" for="w5-email">Email</label>
-														<div class="col-sm-7">
-															<input type="text" class="form-control" name="email" id="w5-email" required>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#4A" name="jawaban#4" value="1">
+															<label for="pilgan#4A">4 - Pilihan A</label>
 														</div>
 													</div>
 													<div class="form-group">
-														<div class="col-sm-2"></div>
-														<div class="col-sm-8">
-															<div class="checkbox-custom">
-																<input type="checkbox" name="terms" id="w5-terms" required>
-																<label for="w5-terms">I agree to the terms of service</label>
-															</div>
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#4B" name="jawaban#4" value="2">
+															<label for="pilgan#4B">4 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#4C" name="jawaban#4" value="3">
+															<label for="pilgan#4C">4 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#4D" name="jawaban#4" value="4">
+															<label for="pilgan#4D">4 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#4E" name="jawaban#4" value="5">
+															<label for="pilgan#4E">4 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#4" name="ragu#4">
+															<label for="ragu#4"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
+												<div id="soal-5" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#5A" name="jawaban#5" value="1">
+															<label for="pilgan#5A">5 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#5B" name="jawaban#5" value="2">
+															<label for="pilgan#5B">5 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#5C" name="jawaban#5" value="3">
+															<label for="pilgan#5C">5 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#5D" name="jawaban#5" value="4">
+															<label for="pilgan#5D">5 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#5E" name="jawaban#5" value="5">
+															<label for="pilgan#5E">5 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#5" name="ragu#5">
+															<label for="ragu#5"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
+												<div id="soal-6" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#6A" name="jawaban#6" value="1">
+															<label for="pilgan#6A">6 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#6B" name="jawaban#6" value="2">
+															<label for="pilgan#6B">6 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#6C" name="jawaban#6" value="3">
+															<label for="pilgan#6C">6 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#6D" name="jawaban#6" value="4">
+															<label for="pilgan#6D">6 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#6E" name="jawaban#6" value="5">
+															<label for="pilgan#6E">6 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#6" name="ragu#6">
+															<label for="ragu#6"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
+												<div id="soal-7" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7A" name="jawaban#7" value="1">
+															<label for="pilgan#7A">7 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7B" name="jawaban#7" value="2">
+															<label for="pilgan#7B">7 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7C" name="jawaban#7" value="3">
+															<label for="pilgan#7C">7 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7D" name="jawaban#7" value="4">
+															<label for="pilgan#7D">7 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7E" name="jawaban#7" value="5">
+															<label for="pilgan#7E">7 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#7" name="ragu#7">
+															<label for="ragu#7"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
 														</div>
 													</div>
 												</div>
@@ -451,10 +601,13 @@
 										</ul>
 									</div>
 									<div class="panel-footer text-center">
-										<button id="page-1" type="button" class="btn btn-secondary page-soal active">1</button>
-										<button id="page-2" type="button" class="btn btn-secondary page-soal">2</button>
-										<button id="page-3" type="button" class="btn btn-secondary page-soal">3</button>
-										<button id="page-4" type="button" class="btn btn-secondary page-soal">4</button>
+										<button id="page-1" type="button" page="1" class="btn btn-secondary page-soal active"> 1 </button>
+										<button id="page-2" type="button" page="2" class="btn btn-secondary page-soal"> 2 </button>
+										<button id="page-3" type="button" page="3" class="btn btn-secondary page-soal"> 3 </button>
+										<button id="page-4" type="button" page="4" class="btn btn-secondary page-soal"> 4 </button>
+										<button id="page-5" type="button" page="5" class="btn btn-secondary page-soal"> 5 </button>
+										<button id="page-6" type="button" page="6" class="btn btn-secondary page-soal"> 6 </button>
+										<button id="page-7" type="button" page="7" class="btn btn-secondary page-soal"> 7 </button>
 									</div>
 								</section>
 							</div>
@@ -469,7 +622,6 @@
 			
 			document.addEventListener('DOMContentLoaded', function () {
 				try {
-					document.getElementById("preloader").style.visibility = 'hidden';
 					let app = firebase.app();
 					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
 					console.log(`Firebase SDK loaded with ${features.join(', ')}`);
@@ -478,9 +630,6 @@
 					console.log('Error loading the Firebase SDK, check the console.');
 				}
 			});
-			if(!sessionStorage.status){
-				window.location.href = "login.html";
-			}
 		</script>
 
 		<!-- Vendor -->
@@ -501,7 +650,7 @@
 		<script src="assets/javascripts/theme.js"></script>
 		
 		<!-- Theme Custom -->
-		<script src="assets/javascripts/theme.custom.js"></script>
+		<script defer src="assets/javascripts/theme.custom.js"></script>
 		
 		<!-- Theme Initialization Files -->
 		<script src="assets/javascripts/theme.init.js"></script>
