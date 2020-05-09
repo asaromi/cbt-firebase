@@ -40,35 +40,10 @@
 		<!-- Skin CSS -->
 		<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
 
-		<style>
-			#preloader {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 9999;
-				background-color: #fff;
-			}
-
-			.loading {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				font: 14px arial;
-			}
-		</style>
-
+		
 	</head>
 	<body>
-		<div id="preloader">
-			<div class="loader loading" id="loader-4">
-				<span></span>
-				<span></span>
-				<span></span>
-			  </div>
-		</div>
+		
 		<!-- start: page -->
 		<section class="body-sign">
 			<div class="center-sign">
@@ -143,7 +118,6 @@
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
 				try {
-					document.getElementById("preloader").style.visibility = 'hidden';
 					var db = firebase.database();
 					let app = firebase.app();
 					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
