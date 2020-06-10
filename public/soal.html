@@ -66,13 +66,13 @@
 					<a href="../" class="logo">
 						<img src="assets/images/logo.png" height="35" alt="Porto Admin" />
 					</a>
-					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
-						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-					</div>
 				</div>
 			
 				<!-- start: search & user box -->
 				<div class="header-right">
+					<div style="float: left; position: relative;" class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
 					<span class="separator"></span>
 					<div id="userbox" class="userbox pull-right" style="margin-top: 12px;">
 						<a href="#" data-toggle="dropdown">
@@ -81,20 +81,16 @@
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 								<span class="name">John Doe Junior</span>
-								<span class="role">administrator</span>
+								<span class="role">user</span>
 							</div>
 			
 							<i class="fa custom-caret"></i>
 						</a>
-			
 						<div class="dropdown-menu">
 							<ul class="list-unstyled">
 								<li class="divider"></li>
 								<li>
 									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
-								</li>
-								<li>
-									<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
 								</li>
 								<li>
 									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
@@ -251,8 +247,8 @@
 										</div>
 										<span id="judul-soal" class="h2">#1</span>
 										<div class="progress progress-striped progress-lg m-md light">
-											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width: 0%;">
-												<span class="sr-only">0%</span>25%
+											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+												<span class="sr-only">0%</span>0%
 											</div>
 										</div>
 									</header>
@@ -586,6 +582,138 @@
 														</div>
 													</div>
 												</div>
+												<div id="soal-8" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#8A" name="jawaban#8" value="1">
+															<label for="pilgan#7A">8 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#8B" name="jawaban#8" value="2">
+															<label for="pilgan#8B">8 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#8C" name="jawaban#8" value="3">
+															<label for="pilgan#8C">8 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#7D" name="jawaban#7" value="4">
+															<label for="pilgan#7D">7 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#8E" name="jawaban#8" value="5">
+															<label for="pilgan#8E">8 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#8" name="ragu#8">
+															<label for="ragu#8"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
+												<div id="soal-9" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#9A" name="jawaban#9" value="1">
+															<label for="pilgan#9A">9 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#9B" name="jawaban#9" value="2">
+															<label for="pilgan#9B">9 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#9C" name="jawaban#9" value="3">
+															<label for="pilgan#9C">9 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#9D" name="jawaban#9" value="4">
+															<label for="pilgan#9D">9 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#9E" name="jawaban#9" value="5">
+															<label for="pilgan#9E">9 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#9" name="ragu#9">
+															<label for="ragu#9"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
+												<div id="soal-10" class="tab-pane">
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#10A" name="jawaban#10" value="1">
+															<label for="pilgan#10A">10 - Pilihan A</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#10B" name="jawaban#10" value="2">
+															<label for="pilgan#10B">10 - Pilihan B</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#10C" name="jawaban#10" value="3">
+															<label for="pilgan#10C">10 - Pilihan C</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#10D" name="jawaban#10" value="4">
+															<label for="pilgan#10D">10 - Pilihan D</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-1"></div>
+														<div class="col-sm-7 radio-custom h5">
+															<input type="radio" id="pilgan#10E" name="jawaban#10" value="5">
+															<label for="pilgan#10E">10 - Pilihan E</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-sm">
+														<div class="col-md-9 checkbox-custom checkbox-default">
+															<input type="checkbox" onclick="checkRagu()" id="ragu#10" name="ragu#10">
+															<label for="ragu#10"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+												</div>
 											</div>
 										</form>
 										<ul class="pager">
@@ -608,6 +736,9 @@
 										<button id="page-5" type="button" page="5" class="btn btn-secondary page-soal"> 5 </button>
 										<button id="page-6" type="button" page="6" class="btn btn-secondary page-soal"> 6 </button>
 										<button id="page-7" type="button" page="7" class="btn btn-secondary page-soal"> 7 </button>
+										<button id="page-8" type="button" page="8" class="btn btn-secondary page-soal"> 8 </button>
+										<button id="page-9" type="button" page="9" class="btn btn-secondary page-soal"> 9 </button>
+										<button id="page-10" type="button" page="10" class="btn btn-secondary page-soal"> 10 </button>
 									</div>
 								</section>
 							</div>
@@ -658,12 +789,5 @@
 		<!-- Examples -->
 		<!-- <script src="assets/javascripts/forms/examples.wizard.js"></script> -->
 		<script src="assets/javascripts/soal.js"></script>
-		<script>
-			$(document).ready(function(){
-				var current = $('.page-soal.active').html();
-				var length = $('.page-soal').length;
-				$('.progress-striped .progress-bar').css('width',(current/length*100)+'%');
-			});
-		</script>
 	</body>
 </html>

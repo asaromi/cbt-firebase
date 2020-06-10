@@ -809,6 +809,19 @@
 			</aside>
 		</section>
 
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				try {
+					let app = firebase.app();
+					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+					console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+				} catch (e) {
+					console.error(e);
+					console.log('Error loading the Firebase SDK, check the console.');
+				}
+			});
+		</script>
+
 		<!-- Vendor -->
 		<script src="assets/vendor/jquery/jquery.js"></script>
 		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>

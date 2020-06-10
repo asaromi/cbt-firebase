@@ -33,3 +33,20 @@
   transform: translate(-50%, -50%);
   font: 14px arial;
 }
+
+.page-soal {
+  width: 42.0156px;
+}
+
+/* Userbox - Mobile */
+@media only screen and (max-width: 767px) {
+	.userbox {
+		float: right !important;
+		margin: 12px 8px 0 12px;
+		position: relative;
+	}
+
+	.userbox .profile-picture {
+		display: inline !important;
+	}
+}
