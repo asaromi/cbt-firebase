@@ -1,16 +1,7 @@
 let id;
 
 $(document).ready(function () {
-    var current = $('.page-soal.active');
     var total = $('.page-soal').length;
-    console.log(current);
-    $("input[name='jawaban#"+current.attr('page')+"']").on('click', function(){
-        current.removeClass('btn-secondary');
-        current.addClass('btn-success');
-        console.log($('.page-soal.btn-success').length);
-        $('.progress-striped .progress-bar').css('width',($('.page-soal.btn-success').length/total*100)+'%');
-        $('.progress-striped .progress-bar').html(Math.round($('.page-soal.btn-success').length/total*100)+'%');
-    });
 });
 
 $('.page-soal').on('click', function(){
@@ -39,6 +30,16 @@ $('.finish').on('click', function () {
     }
 });
 
+function done(num, total) {
+    $("input[name='jawaban#"+num.attr('page')+"']").on('click', function(){
+        num.removeClass('btn-secondary');
+        num.addClass('btn-success');
+        console.log($('.page-soal.btn-success').length);
+        $('.progress-striped .progress-bar').css('width',($('.page-soal.btn-success').length/total*100)+'%');
+        $('.progress-striped .progress-bar').html(Math.round($('.page-soal.btn-success').length/total*100)+'%');
+    });
+}
+
 function checkRagu() {
     var current = $('.page-soal').parent().find('.active');
     if ($("input[type='checkbox']").is(":checked")) {
@@ -50,6 +51,13 @@ function checkRagu() {
 
 function changeSoal(id, total) {
     var before = $('.page-soal').parent().find('.active');
+    if($("input[name='jawaban#"+before.attr('page')+"']").val()){
+        before.removeClass('btn-secondary');
+        before.addClass('btn-success');
+        console.log($('.page-soal.btn-success').length);
+        $('.progress-striped .progress-bar').css('width',($('.page-soal.btn-success').length/total*100)+'%');
+        $('.progress-striped .progress-bar').html(Math.round($('.page-soal.btn-success').length/total*100)+'%');
+    }
     before.removeClass('active');
 
     $('.page-soal').eq(id).addClass('active');
