@@ -4,20 +4,34 @@ var login = false;
 const stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
 
 $('a.btn-danger').on('click', function () {
-    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function (result) {
+        db.ref("users").orderByChild("email").equalTo(result.user.email).once("child_added").then(function (snapshot) {
+            localStorage.user = JSON.stringify(snapshot.val());
+        });
+    });
 });
 
 if($("input[name='rememberme']").is(':checked')){
     auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
 }
 
+function user() {
+    db.ref("users").once("value", function(snapshot){
+        console.log(snapshot.toJSON());
+    });
+}
+
 function thisDate() {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+    var DD = String(today.getUTCDate()).padStart(2, '0');
+    var MM = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
+    var YYYY = today.getUTCFullYear();
+    
+    var hh = today.getUTCHours();
+    var mm = today.getUTCMinutes();
+    var ss = today.getUTCSeconds();
 
-    today = yyyy + mm + dd + "001";
+    today = YYYY + "-" + MM + "-" + DD;
     return today;
 }
 
@@ -70,11 +84,11 @@ function setSession() {
             var value = snapshot.val();
             console.log(value);
             if(value.password == window.btoa(password)){
-                sessionStorage.id = value.id;
-                sessionStorage.email = value.email;
-                sessionStorage.nama = value.nama;
+                localStorage.id = value.id;
+                localStorage.email = value.email;
+                localStorage.nama = value.nama;
                 if(value.status) {
-                    sessionStorage.status = value.status;
+                    localStorage.status = value.status;
                     location.href = "index.html";
                 } else {
                     alert("Email yang Anda masukkan belum terverifikasi. Silahkan hubungi Admin");
