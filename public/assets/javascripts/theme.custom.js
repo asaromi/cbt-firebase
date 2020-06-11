@@ -9,6 +9,10 @@ if (pwd == "/home.html" || pwd == "/soal.html") {
         if(user){
             console.log(user);
             $('.profile-info').find('.name').html(user.displayName);
+            
+            if(JSON.parse(localStorage.user)["admin"])
+                $('.profile-info').find('.role').html("admin");
+
             $('.profile-info').attr('data-lock-name',user.displayName);
             $('.profile-info').attr('data-lock-email',user.email);
             $('figure.profile-picture img').attr('alt', user.displayName);
@@ -24,7 +28,12 @@ if (pwd == "/home.html" || pwd == "/soal.html") {
     });
 }
 
-
+if(pwd == "/500.html"){
+    var user = JSON.parse(localStorage.user);
+    console.log(user["admin"]);
+    if(!user["admin"])
+        window.location.href = "/404.html";
+}
 
 function getEmail() {
     var email = $("input[type='email']").val();
@@ -40,17 +49,18 @@ function signOut() {
     auth.signOut().then(function() {
         var notice = new PNotify({
 			title: 'SUCCESS',
-			text: 'Anda Sudah Keluar',
+			text: 'Logout Berhasil. Tunggu sebentar...',
 			type: 'success',
 			addclass: 'stack-bar-top',
 			stack: stack_bar_top,
 			width: "100%"
         });
+        localStorage.clear();
         window.location.href = "login.html";
     }).catch(function(error) {
         var notice = new PNotify({
             title: 'ERROR',
-            text: 'Password yang anda masukkan salah.',
+            text: 'Logout Gagal',
             type: 'error',
             addclass: 'stack-bar-top',
             stack: stack_bar_top,
