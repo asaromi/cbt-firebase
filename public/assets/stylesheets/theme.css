@@ -6237,7 +6237,7 @@ html .panel .panel-heading-transparent + .panel-body {
 	background-color: white;
 	border: 1px solid #eeeeee;
 	border-top: 0;
-	padding: 15px;
+	padding: 15px 15px 10px 15px;
 }
 
 /* content - footer inside */
