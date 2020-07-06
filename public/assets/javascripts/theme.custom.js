@@ -5,22 +5,21 @@ const stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1
 const pwd = window.location.pathname;
 
 if (pwd == "/home.html" || pwd == "/soal.html") {
-    auth.onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-            console.log(user);
+            alert("success login\nEmail : "+user.email);
+            $('#preloader').attr('hidden',true);
             $('.profile-info').find('.name').html(user.displayName);
             
-            if(JSON.parse(localStorage.user)["admin"])
-                $('.profile-info').find('.role').html("admin");
-
-            $('.profile-info').attr('data-lock-name',user.displayName);
-            $('.profile-info').attr('data-lock-email',user.email);
+            $('.profile-info').attr('data-lock-name', user.displayName);
+            $('.profile-info').attr('data-lock-email', user.email);
             $('figure.profile-picture img').attr('alt', user.displayName);
-            $('.preloader').attr('hidden',true);
-            console.log(user.photoURL);
-            if (user.photoURL) {
-                $('figure.profile-picture img').attr('src', user.photoURL);
-            }
+            
+            $('figure.profile-picture img').attr('src', '/assets/images/!logged-user.jpg');
+
+            if(JSON.parse(sessionStorage.user)["admin"])
+                $('.profile-info').find('.role').html("admin");
+            
         } else{
             console.log('no user');
             window.location.href = "login.html";
@@ -28,11 +27,16 @@ if (pwd == "/home.html" || pwd == "/soal.html") {
     });
 }
 
+/* FOR admin.html */
 if(pwd == "/500.html"){
-    var user = JSON.parse(localStorage.user);
-    console.log(user["admin"]);
-    if(!user["admin"])
+    if(!sessionStorage.user){
         window.location.href = "/404.html";
+    } else {
+        var user = JSON.parse(sessionStorage.user);
+        console.log(user["admin"]);
+        if(!user["admin"])
+            window.location.href = "/404.html";
+    }
 }
 
 function getEmail() {
@@ -46,6 +50,7 @@ function getPassword() {
 }
 
 function signOut() {
+    sessionStorage.clear();
     auth.signOut().then(function() {
         var notice = new PNotify({
 			title: 'SUCCESS',
@@ -55,7 +60,7 @@ function signOut() {
 			stack: stack_bar_top,
 			width: "100%"
         });
-        localStorage.clear();
+        sessionStorage.clear();
         window.location.href = "login.html";
     }).catch(function(error) {
         var notice = new PNotify({
