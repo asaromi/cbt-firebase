@@ -1,0 +1,26 @@
+{
+  "name": "cbt-firebase",
+  "version": "1.0.0",
+  "description": "cbt using firebase",
+  "main": "/public/assets/javascripts/theme.custom.js",
+  "dependencies": {
+    "firebase-admin": "^8.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asaromi/cbt-firebase.git"
+  },
+  "keywords": [
+    "cbt-firebase"
+  ],
+  "author": "asaromi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asaromi/cbt-firebase/issues"
+  },
+  "homepage": "https://github.com/asaromi/cbt-firebase#readme"
+}
