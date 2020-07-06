@@ -269,10 +269,10 @@
 												</li>
 											</ul>
 										</div>
-										<div class="col-md-12 text-left">
-											<p class="lead" style="font-size: 19px;" id="isi-soal" style="max-width: 100%;">Soal #1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a adipiscing lectus. Aenean fermentum mauris erat, quis accumsan eros facilisis sed. Nullam convallis arcu nec imperdiet pharetra. Suspendisse sed pharetra orci. Integer elementum augue sed dui sollicitudin, eu molestie leo rutrum. Vestibulum sit amet ullamcorper nunc.</p>
-										</div>
 										<form class="form-horizontal" novalidate="novalidate">
+											<div class="col-md-12 text-left">
+												<p class="lead" style="font-size: 19px;" id="isi-soal" style="max-width: 100%;">Soal #1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a adipiscing lectus. Aenean fermentum mauris erat, quis accumsan eros facilisis sed. Nullam convallis arcu nec imperdiet pharetra. Suspendisse sed pharetra orci. Integer elementum augue sed dui sollicitudin, eu molestie leo rutrum. Vestibulum sit amet ullamcorper nunc.</p>
+											</div>
 											<div class="tab-content">
 												<div id="soal-1" class="tab-pane active">
 													<div class="form-group">
@@ -315,6 +315,12 @@
 														<div class="col-md-9 checkbox-custom checkbox-default">
 															<input type="checkbox" onclick="checkRagu()" id="ragu#1" name="ragu#1">
 															<label for="ragu#1"><i class="fa fa-flag"></i> Klik jika masih ragu dengan jawaban kamu</label>
+														</div>
+													</div>
+													<br>
+													<div class="form-group m-xs">
+														<div class="col-md-12 text-center">
+															<h4><b>Sisa Waktu</b> <span id="countdown">00.00.00</span></h4>
 														</div>
 													</div>
 												</div>
@@ -716,7 +722,7 @@
 												</div>
 											</div>
 										</form>
-										<ul class="pager">
+										<ul class="pager m-xs">
 											<li class="previous disabled">
 												<a><i class="fa fa-angle-left"></i> Previous</a>
 											</li>

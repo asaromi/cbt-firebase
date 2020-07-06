@@ -51,7 +51,7 @@ function checkRagu() {
 
 function changeSoal(id, total) {
     var before = $('.page-soal').parent().find('.active');
-    if($("input[name='jawaban#"+before.attr('page')+"']").val()){
+    if($("input[name='jawaban#"+before.attr('page')+"']:checked").val()){
         before.removeClass('btn-secondary');
         before.addClass('btn-success');
         console.log($('.page-soal.btn-success').length);
