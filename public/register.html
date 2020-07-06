@@ -45,10 +45,33 @@
 
 		<!-- Head Libs -->
 		<script src="assets/vendor/modernizr/modernizr.js"></script>
+		<style>
+			.form-control.input-lg {
+				font-size: 13px !important;
+			}
+
+			#preloader {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background-color: #fff;
+			}
+
+			.loading {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				font: 14px arial;
+			}
+		</style>
 
 	</head>
 	<body>
-		<div class="preloader">
+		<div id="preloader">
 			<div class="loader loading" id="loader-4">
 				<span></span>
 				<span></span>
@@ -101,17 +124,12 @@
 								</div>
 								<div class="col-sm-4 text-right">
 									<button type="submit" class="btn btn-primary">Register</button>
-									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
 								</div>
 							</div>
 
 							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
 								<span>or</span>
 							</span>
-
-							<div class="mb-xs text-center">
-								<a class="btn btn-danger mb-md ml-xs mr-xs"><i class="fa fa-google-plus-square"></i> Connect with Google</a>
-							</div>
 
 							<p class="text-center">Already have an account? <a href="login.html">Login Here!</a>
 
@@ -129,14 +147,14 @@
 				try {
 					let app = firebase.app();
 					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-					console.log(`Firebase SDK loaded with ${features.join(', ')}`);
-					firebase.auth().onAuthStateChanged(function (user) {
+					console.log(`Firebase SDK untuk ${features.join(', ')} berhasil dimuat`);
+					firebase.auth().onAuthStateChanged(function(user) {
 						if(user){
 							console.log(user);
 							window.location.href = "/";
 						} else {
 							console.log('no user');
-							$('.preloader').attr('hidden',true);
+							$('#preloader').attr('hidden',true);
 						}
 					});
 				} catch (e) {
@@ -159,7 +177,7 @@
 		<script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
 		<script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 		<script src="assets/vendor/pnotify/pnotify.custom.js"></script>
-		
+
 		<!-- Theme Initialization Files -->
 		<script src="assets/javascripts/theme.init.js"></script>
 		<script defer src="assets/javascripts/register.js"></script>

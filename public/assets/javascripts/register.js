@@ -4,7 +4,11 @@ const stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1
 
 $('a.btn-danger').on('click', function () {
     if($("input[name='agreeterms']").is(':checked')){
-        auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result){
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        console.log(provider);
+        auth.signInWithPopup(provider).then(function(result){
             var db_user = db.ref("users");
             var lastKey = 0;
             var email = result.user.email;
@@ -18,8 +22,37 @@ $('a.btn-danger').on('click', function () {
                 }).then(function () {
                     return db_user.child(String(lastKey+1)).once("value");
                 }).then(function (snapshot) {
-                    localStorage.user = JSON.stringify(snapshot.val());
+                    sessionStorage.user = JSON.stringify(snapshot.val());
                 });
+            });
+        });
+    } 
+});
+
+$('button.btn-primary').on('click', function(){
+    $(this).attr('disabled', true)
+    var email = $("input[name='email']").val();
+    var password = $("input[name='pwd']").val();
+    var db_user = db.ref("users");
+    var lastKey = 0;
+    db_user.orderByKey().limitToLast(1).once("child_added", function(snapshot) {
+        lastKey = parseInt(snapshot.key);
+        console.log("Get lastKey = "+lastKey);
+    });
+
+    if ($("input[name='agreeterms']").is(':checked')){
+        db_user.child(String(lastKey+1)).set({
+            admin : true,
+            email : email,
+        }).then(function () {
+            auth.createUserWithEmailAndPassword(email, password).then(function(){
+                alert("User berhasil dibuat");
+                auth.signOut();
+                // window.location.href = "login.html";
+            })
+            .catch(function(error) {
+                alert(error.message);
+                $(this).attr('disabled', false)
             });
         });
     } else {
@@ -35,5 +68,25 @@ $('a.btn-danger').on('click', function () {
                 nonblock_opacity: .2
             }
         });
+        $(this).attr('disabled', false)
     }
 });
+
+function register(){
+    var email = $("input[name='email']").val();
+    var password = $("input[name='pwd']").val();
+    db_user = db.ref("users");
+    
+
+    auth.createUserWithEmailAndPassword(email, password).then(function(result) {
+        db_user.child(String(lastKey+1)).set({
+            admin : true,
+            email : email,
+        }).then(function () {
+            alert("user berhasil dibuat!");
+            auth.signOut();
+        }); 
+    }).catch(function(error) {
+        alert(error.message);
+    });
+}
