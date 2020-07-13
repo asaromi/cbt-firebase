@@ -38,6 +38,26 @@
 		<!-- Head Libs -->
 		<script src="assets/vendor/modernizr/modernizr.js"></script>
 
+		<style>
+			#preloader {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background-color: #fff;
+			}
+
+			.loading {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				font: 14px arial;
+			}
+		</style>
+
 		<!-- Using Firebase JS -->
 		<!-- update the version number as needed -->
 		<script defer src="/__/firebase/7.9.3/firebase-app.js"></script>
@@ -51,7 +71,7 @@
 
 	</head>
 	<body>
-		<div class="preloader">
+		<div id="preloader">
 			<div class="loader loading" id="loader-4">
 				<span></span>
 				<span></span>
@@ -66,34 +86,33 @@
 					<a href="../" class="logo">
 						<img src="assets/images/logo.png" height="35" alt="Porto Admin" />
 					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
 				</div>
 			
 				<!-- start: search & user box -->
 				<div class="header-right">
-					<div style="float: left; position: relative;" class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
-						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-					</div>
 					<span class="separator"></span>
-					<div id="userbox" class="userbox pull-right" style="margin-top: 12px;">
+			
+					<div id="userbox" class="userbox">
 						<a href="#" data-toggle="dropdown">
 							<figure class="profile-picture">
 								<img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 								<span class="name">John Doe Junior</span>
-								<span class="role">user</span>
+								<span class="role">User</span>
 							</div>
 			
 							<i class="fa custom-caret"></i>
 						</a>
+			
 						<div class="dropdown-menu">
 							<ul class="list-unstyled">
 								<li class="divider"></li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
-								</li>
-								<li>
-									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
+									<a role="menuitem" onclick="auth.signOut()" tabindex="-1"><i class="fa fa-power-off"></i> Logout</a>
 								</li>
 							</ul>
 						</div>
@@ -121,7 +140,7 @@
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
 									<li>
-										<a href="home.html">
+										<a href="index.html">
 											<i class="fa fa-home" aria-hidden="true"></i>
 											<span>Dashboard</span>
 										</a>
@@ -183,46 +202,6 @@
 									</ul>
 								</div>
 							</div>
-				
-							<hr class="separator" />
-				
-							<div class="sidebar-widget widget-stats">
-								<div class="widget-header">
-									<h6>Company Stats</h6>
-									<div class="widget-toggle">+</div>
-								</div>
-								<div class="widget-content">
-									<ul>
-										<li>
-											<span class="stats-title">Stat 1</span>
-											<span class="stats-complete">85%</span>
-											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-													<span class="sr-only">85% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<span class="stats-title">Stat 2</span>
-											<span class="stats-complete">70%</span>
-											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-													<span class="sr-only">70% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<span class="stats-title">Stat 3</span>
-											<span class="stats-complete">2%</span>
-											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-													<span class="sr-only">2% Complete</span>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
 						</div>
 				
 					</div>
@@ -245,7 +224,7 @@
 											<a href="#" class="fa fa-caret-down"></a>
 											<a href="#" class="fa fa-times"></a>
 										</div>
-										<span id="judul-soal" class="h2">#1</span>
+										<span id="timer" class="h4"><b>Sisa Waktu 00.00.00</b></span>
 										<div class="progress progress-striped progress-lg m-md light">
 											<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
 												<span class="sr-only">0%</span>0%

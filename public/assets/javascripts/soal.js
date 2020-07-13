@@ -65,7 +65,6 @@ function changeSoal(id, total) {
     $('.tab-pane').eq(id).addClass('active');
     $('.wizard-steps li.active').removeClass('active');
     $('.wizard-steps li').eq(id).addClass('active');
-    $('#judul-soal').html("#"+(Number(id)+1));
     $('#isi-soal').html("Soal #"+(Number(id)+1)+" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a adipiscing lectus. Aenean fermentum mauris erat, quis accumsan eros facilisis sed. Nullam convallis arcu nec imperdiet pharetra. Suspendisse sed pharetra orci. Integer elementum augue sed dui sollicitudin, eu molestie leo rutrum. Vestibulum sit amet ullamcorper nunc.");
     checkId(id);
 }
