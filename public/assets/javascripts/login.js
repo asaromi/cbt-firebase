@@ -28,20 +28,32 @@ function getPassword() {
 }
 
 $('button.btn-primary').on('click', function (){
+    var btn = $(this);
+    btn.attr('disabled', true);
     db.ref("users").orderByChild("email").equalTo(getEmail()).once("child_added").then(function (snapshot) {
-        sessionStorage.user = JSON.stringify(snapshot.val());
-        auth.signInWithEmailAndPassword(getEmail(), getPassword()).then(function (result) {
-            console.log(result.user);
-            if(!result.user.emailVerified){
-                alert("User belum terverifikasi. Silahkan hubungi admin ke wa.me/....");
-                auth.signOut();
-            } else {
-                window.location.href = "home.html";
-            }
-        })
-        .catch(function(error) {
-            alert(error.message);
-        });
+        if(snapshot.val().verified){
+            sessionStorage.user = JSON.stringify(snapshot.val());
+            auth.signInWithEmailAndPassword(getEmail(), getPassword()).then(function (result) {
+                console.log(result.user);
+                if(snapshot.val().admin){
+                    alert("redirect to Dashboard Admin");
+                    
+                }
+                else{
+                    alert("redirect to Dashboard");
+                    
+                }
+            })
+            .catch(function(error) {
+                alert(error.message);
+            });
+        } else {
+            console.log($(this));
+            alert("User belum terverifikasi. Silahkan hubungi admin ke wa.me/....");
+            btn.attr('disabled', false);
+        }
+    }).catch(function(error){
+        alert(error.message);
     });
 });
 
