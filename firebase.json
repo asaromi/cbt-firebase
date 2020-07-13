@@ -11,11 +11,11 @@
 		],
 		"redirects": [{
 			"source": "/",
-			"destination": "/home.html",
+			"destination": "/index.html",
 			"type": 301
 		},{
-			"source": "/index.html",
-			"destination": "/home.html",
+			"source": "/home.html",
+			"destination": "/index.html",
 			"type":301
 		}]
 	},
