@@ -47,6 +47,20 @@
 		<script defer src="/__/firebase/init.js"></script>
 
 		<style>
+			label.checkbox-inline {
+				padding: 0 7px 0 0 !important;
+				margin: 0 !important;
+			}
+
+			#image, .imageChoices {
+				height: auto !important;
+				width: auto !important;
+			}
+
+			#imagePreview {
+				max-width: 200px;
+			}
+
 			#preloader {
 				position: fixed;
 				top: 0;
@@ -198,7 +212,7 @@
 												</a>
 											</li>
 											<li class="nav-active">
-												<a href="pages-404.html">
+												<a href="setting.html">
 													<i class="fa fa-wrench" aria-hidden="true"></i>Pengaturan Try Out
 												</a>
 											</li>
@@ -250,340 +264,183 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>List Users</h2>
+						<h2>Setting Try Out</h2>
 					</header>
 
 					<!-- start: page -->
 
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-						<div class="tabs">
-							<ul class="nav nav-tabs tabs-primary">
-								<li class="active">
-									<a href="#overview" data-toggle="tab">Overview</a>
-								</li>
-								<li>
-									<a href="#edit" data-toggle="tab">Buat Soal</a>
-								</li>
-							</ul>
-							<div class="tab-content">
-								<div id="overview" class="tab-pane active">
-									<h4 class="mb-md">Setting Try Out</h4>
-									<a class="modal-with-form btn btn-primary" href="#modalForm"><i class="fa fa-edit"> Edit Setting</i></a>
-
-									<!-- Modal Form -->
-									<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
-										<section class="panel">
-											<header class="panel-heading">
-												<h2 class="panel-title">Registration Form</h2>
-											</header>
-											<div class="panel-body">
-												<form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
-													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Name</label>
-														<div class="col-sm-9">
-															<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">Email</label>
-														<div class="col-sm-9">
-															<input type="email" name="email" class="form-control" placeholder="Type your email..." required/>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">URL</label>
-														<div class="col-sm-9">
-															<input type="url" name="url" class="form-control" placeholder="Type an URL..." />
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">Comment</label>
-														<div class="col-sm-9">
-															<textarea rows="5" class="form-control" placeholder="Type your comment..." required></textarea>
-														</div>
-													</div>
-												</form>
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<div class="tabs">
+								<ul class="nav nav-tabs tabs-primary">
+									<li class="active">
+										<a href="#overview" data-toggle="tab">Overview</a>
+									</li>
+									<li>
+										<a href="#edit" data-toggle="tab">Buat Soal</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="overview" class="tab-pane active">
+										<h4 class="mb-md"><b>Setting Try Out</b></h4>
+										<form class="form-inline">
+											<div class="form-group ">
+												<label class="sr-only" for="exampleInputUsername2">Timer</label>
+												<input type="number" name="timer" class="form-control" id="timer" placeholder="Dalam Second (mis. 3600)">
 											</div>
-											<footer class="panel-footer">
-												<div class="row">
-													<div class="col-md-12 text-right">
-														<button class="btn btn-primary modal-confirm">Submit</button>
-														<button class="btn btn-default modal-dismiss">Cancel</button>
+
+											<div class="form-group">
+												<label class="sr-only" for="exampleInputUsername2">Tanggal</label>
+												<div class="col-md-12">
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="fa fa-calendar"></i>
+														</span>
+														<input type="text" data-plugin-datepicker name="tanggal" id="tanggal" class="form-control" placeholder="Masukkan Tanggal Baru">
 													</div>
 												</div>
-											</footer>
-										</section>
-									</div>
-									<div class="panel-body tab-content">
-										<div id="access-log" class="tab-pane active">
-											<table class="table table-striped table-no-more table-bordered  mb-none">
-												<thead>
-													<tr>
-														<th style="width: 10%"><span class="text-normal text-sm">Type</span></th>
-														<th style="width: 15%"><span class="text-normal text-sm">Date</span></th>
-														<th><span class="text-normal text-sm">Message</span></th>
-													</tr>
-												</thead>
-												<tbody class="log-viewer">
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-bug fa-fw text-muted text-md va-middle"></i> Debug
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 18:25:59
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															my.host - oh snap! another exception
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:50:17
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET / HTTP/1.1" 200 1225
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div id="error-log" class="tab-pane">
-											<table class="table table-striped table-no-more table-bordered mb-none">
-												<thead>
-													<tr>
-														<th style="width: 10%"><span class="text-normal text-sm">Type</span></th>
-														<th style="width: 15%"><span class="text-normal text-sm">Date</span></th>
-														<th><span class="text-normal text-sm">Message</span></th>
-													</tr>
-												</thead>
-												<tbody class="log-viewer">
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:30
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:29
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:28
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:27
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:26
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-times-circle fa-fw text-danger text-md va-middle"></i> Error
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															13/04/2014 21:55:25
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															File does not exist: /var/www/porto-admin/favicon.ico
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-ban fa-fw text-danger text-md va-middle"></i> Fatal
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 22:13:39
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															not a tree object
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div id="custom-log" class="tab-pane">
-											<table class="table table-striped table-no-more table-bordered  mb-none">
-												<thead>
-													<tr>
-														<th style="width: 10%"><span class="text-normal text-sm">Type</span></th>
-														<th style="width: 15%"><span class="text-normal text-sm">Date</span></th>
-														<th><span class="text-normal text-sm">Message</span></th>
-													</tr>
-												</thead>
-												<tbody class="log-viewer">
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 21:50:54
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET / HTTP/1.1" 200 1225
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 21:50:53
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET /assets/vendor/bootstrap/css/bootstrap.css HTTP/1.1" 200 110495
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 21:50:52
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET /assets/stylesheets/theme.css HTTP/1.1" 200 1273
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 21:50:51
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET /assets/stylesheets/skin.css HTTP/1.1" 200 230
-														</td>
-													</tr>
-													<tr>
-														<td data-title="Type" class="pt-md pb-md">
-															<i class="fa fa-info fa-fw text-info text-md va-middle"></i> Info
-														</td>
-														<td data-title="Date" class="pt-md pb-md">
-															12/04/2014 21:50:50
-														</td>
-														<td data-title="Message" class="pt-md pb-md">
-															"GET /assets/vendor/jquery/jquery.js HTTP/1.1" 200 244962
-														</td>
-													</tr>
-												</tbody>
-											</table>
+											</div>
+
+											<a class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+										</form>
+										<div class="panel-body tab-content">
+											<div id="access-log" class="tab-pane active">
+												<table class="table table-striped table-no-more table-bordered  mb-none">
+													<thead>
+														<tr>
+															<th style="width: 20%"><span class="text-sm">Setting</span></th>
+															<th style="width: 20%"><span class="text-sm">Nilai</span></th>
+															<th><span class="text-sm">Keterangan</span></th>
+														</tr>
+													</thead>
+													<tbody class="log-viewer">
+														<tr>
+															<td data-title="setting" class="pt-md pb-md">
+																<i class="fa fa-calendar fa-fw text-muted text-md va-middle"></i> Tanggal
+															</td>
+															<td data-title="nilai" class="pt-md pb-md">
+																
+															</td>
+															<td data-title="keterangan" class="pt-md pb-md">
+																Tanggal pelaksanaan Try Out
+															</td>
+														</tr>
+														<tr>
+															<td data-title="setting" class="pt-md pb-md">
+																<i class="fa fa-clock-o fa-fw text-muted text-md va-middle"></i> Timer
+															</td>
+															<td data-title="nilai" class="pt-md pb-md">
+																
+															</td>
+															<td data-title="keterangan" class="pt-md pb-md">
+																Lama waktu pengerjaan Soal Try Out
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div id="edit" class="tab-pane">
-									<form method="get">
-										<h4 class="mb-xlg">Personal Information</h4>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
+									<div id="edit" class="tab-pane">
+										<form class="form-horizontal form-bordered" method="post">
+											<h4><b>Buat soal</b></h4>
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="title"><b>Soal</b></label>
+												<div class="col-md-9">
+													<textarea type="text" class="form-control" rows="4" name="title" id="title" placeholder="isi Soal untuk id soal : "></textarea>
 												</div>
 											</div>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
+											<div class="form-group">
+												<div class="col-md-2"></div>
+												<div class="col-md-6 checkbox-custom checkbox-default">
+													<input type="checkbox" id="imageTitle" name="imageTitle">
+													<label for="imageTitle"> Gunakan gambar pada soal?</label>
 												</div>
 											</div>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
+						
+											<div class="form-group" id="form-upload" hidden>
+												<label class="col-md-2 control-label" for="image"><b>Upload soal</b></label>
+												<div class="col-md-6">
+													<input id="image" class="form-control" type="file" name="image" placeholder="Disabled input here...">
+												</div>
+												<div class="col-md-4">
+													<img id="imagePreview"></img>
 												</div>
 											</div>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
+						
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="inputSuccess"><b>Tipe Jawaban</b></label>
+												<div class="col-md-9">
+													<label class="checkbox-inline">
+														<input type="radio" name="tipe-jawaban" id="inlineCheckbox1" value="0" checked> Hanya uraian
+													</label>
+													<label class="checkbox-inline">
+														<input type="radio" name="tipe-jawaban" id="inlineCheckbox2" value="1"> Hanya Gambar
+													</label>
 												</div>
 											</div>
-										
-										<hr class="dotted tall">
-										<h4 class="mb-xlg">About Yourself</h4>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label" for="profileBio">Biographical Info</label>
-												<div class="col-sm-9">
-													<textarea class="form-control" rows="3" id="profileBio"></textarea>
-												</div>
-											</div>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<div class="checkbox-custom checkbox-default checkbox-inline mt-xs">
-														<input type="checkbox" checked="" id="profilePublic">
-														<label for="profilePublic"></label>
-													</div>
-												</div>
-											</div>
-										<hr class="dotted tall">
-										<h4 class="mb-xlg">Change Password</h4>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
-												</div>
-											</div>
-											<div class="form-group mt-lg">
-												<label class="col-sm-3 control-label">Name</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Type your name..." required/>
-												</div>
-											</div>
-										<div class="panel-footer">
-											<div class="row">
-												<div class="col-md-9 col-md-offset-3">
-													<button type="submit" class="btn btn-primary">Submit</button>
-													<button type="reset" class="btn btn-default">Reset</button>
-												</div>
-											</div>
-										</div>
 
-									</form>
+											<div class="form-group" id="jawaban1">
+												<label class="col-md-2 control-label"><b>Pilihan Jawaban</b></label>
+												<div class="col-md-9">
+													<section class="form-group-vertical">
+														<input class="form-control" type="text" id="pilihan-1" placeholder="id pilihan : 1">
+														<input class="form-control" type="text" id="pilihan-2" placeholder="id pilihan : 2">
+														<input class="form-control" type="text" id="pilihan-3" placeholder="id pilihan : 3">
+														<input class="form-control" type="text" id="pilihan-4" placeholder="id pilihan : 4">
+														<input class="form-control last" type="text" id="pilihan-5" placeholder="id pilihan : 5">
+													</section>
+												</div>
+											</div>
+
+											<div class="form-group" id="jawaban2" hidden>
+												<label class="col-md-2 control-label"><b>Upload Jawaban</b></label>
+												<div class="col-md-9">
+													<section class="form-group-vertical">
+														<input class="form-control imageChoices" choices="1" type="file" >
+														<input class="form-control imageChoices" choices="2" type="file" >
+														<input class="form-control imageChoices" choices="3" type="file" >
+														<input class="form-control imageChoices" choices="4" type="file" >
+														<input class="form-control imageChoices last" choices="5" type="file" >
+													</section>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="inputSuccess"><b>Kunci Jawaban</b></label>
+												<div class="col-md-9">
+													<label class="checkbox-inline">
+														<input class="correct" type="radio" name="correct" value="1"> pilihan 1<br>
+														<img id="imageChoices1">
+													</label>
+													<label class="checkbox-inline">
+														<input class="correct" type="radio" name="correct" value="2"> pilihan 2<br>
+														<img id="imageChoices2">
+													</label>
+													<label class="checkbox-inline">
+														<input class="correct" type="radio" name="correct" value="3"> pilihan 3<br>
+														<img id="imageChoices3">
+													</label>
+													<label class="checkbox-inline">
+														<input class="correct" type="radio" name="correct" value="4"> pilihan 4<br>
+														<img id="imageChoices4">
+													</label>
+													<label class="checkbox-inline">
+														<input class="correct" type="radio" name="correct" value="5"> pilihan 5<br>
+														<img id="imageChoices5">
+													</label>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-12 text-center">
+													<a id="buat-soal" class="btn btn-primary">Buat Soal</a>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
 						</div>
 					</div>
 					<!-- end: page -->
@@ -601,6 +458,9 @@
 					console.error(e);
 					console.log('Error loading the Firebase SDK, check the console.');
 				}
+				$('#tanggal').datepicker({
+				    format: 'yyyy-mm-dd'
+				 });
 			});
 		</script>
 
@@ -620,6 +480,7 @@
 		<script src="assets/javascripts/theme.js"></script>
 		
 		<!-- Theme Custom -->
+		<script defer src="assets/javascripts/setting.js"></script>
 		<script defer src="assets/javascripts/theme.custom.js"></script>
 		
 		<!-- Theme Initialization Files -->
