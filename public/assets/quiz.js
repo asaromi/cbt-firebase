@@ -44,13 +44,6 @@ db_soal.orderByKey().on('value', function(shot){
 		                }
 		            ]
 		        }, {
-		            elements: [
-		                {
-		                    type: "html",
-		                    html: "<h2>TPA - Fisika</h2><br>Next Aja"
-		                }
-		            ]
-		        }, {
 					questions: question
 				},
 		    ],
@@ -96,10 +89,8 @@ function questionsArray(snapshot) {
 
 	snapshot.forEach(function(childShot){
 		var item = childShot.val();
-		if(!item["chooseImage"])
+		if(!item["type"])
 			item["type"] = "radiogroup";
-		else
-			item["type"] = "imagepicker";
 
 		if(item["imageTitle"]){
 			store.child(item["image"]).getDownloadURL().then(function(url) {
